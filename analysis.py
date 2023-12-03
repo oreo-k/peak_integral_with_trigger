@@ -129,8 +129,11 @@ def update_output(start_date_input, start_time_input, end_date_input, end_time_i
     Input('output-time-range', 'children')
 )
 def update_wafer_list(time_range):
+
+    df_date_filtered_data = df_data[(df_data["starttime"] >= time_range["start_datetime"]) & (df_data["endtime"] <= time_range["end_datetime"])]
+
     if not time_range:
-        return df_data.to_dict('records')
+        return df_date_filtered_data.to_dict('records')
         
 
 
